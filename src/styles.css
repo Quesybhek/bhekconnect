@@ -1,0 +1,317 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * BhekConnect design system — "Deep Emerald".
+ * Dark-first messaging surface. All colors in oklch.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-bubble-out: var(--bubble-out);
+  --color-bubble-out-foreground: var(--bubble-out-foreground);
+  --color-bubble-in: var(--bubble-in);
+  --color-bubble-in-foreground: var(--bubble-in-foreground);
+  --color-ai: var(--ai);
+  --color-ai-foreground: var(--ai-foreground);
+  --color-online: var(--online);
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 1rem;
+  --background: oklch(0.19 0.021 173);
+  --foreground: oklch(0.94 0.008 175);
+  --surface: oklch(0.235 0.023 174);
+  --surface-2: oklch(0.28 0.026 174);
+  --card: oklch(0.235 0.023 174);
+  --card-foreground: oklch(0.94 0.008 175);
+  --popover: oklch(0.235 0.023 174);
+  --popover-foreground: oklch(0.94 0.008 175);
+  --primary: oklch(0.7 0.132 168);
+  --primary-foreground: oklch(0.17 0.03 172);
+  --secondary: oklch(0.3 0.028 174);
+  --secondary-foreground: oklch(0.94 0.008 175);
+  --muted: oklch(0.28 0.024 174);
+  --muted-foreground: oklch(0.68 0.018 175);
+  --accent: oklch(0.33 0.045 172);
+  --accent-foreground: oklch(0.94 0.008 175);
+  --destructive: oklch(0.62 0.2 22);
+  --destructive-foreground: oklch(0.97 0.01 20);
+  --border: oklch(0.31 0.023 174);
+  --input: oklch(0.29 0.023 174);
+  --ring: oklch(0.7 0.132 168);
+  --bubble-out: oklch(0.42 0.088 165);
+  --bubble-out-foreground: oklch(0.96 0.01 170);
+  --bubble-in: oklch(0.27 0.024 174);
+  --bubble-in-foreground: oklch(0.94 0.008 175);
+  --ai: oklch(0.72 0.13 195);
+  --ai-foreground: oklch(0.18 0.03 195);
+  --online: oklch(0.78 0.16 155);
+  --gradient-emerald: linear-gradient(140deg, oklch(0.7 0.132 168), oklch(0.62 0.12 196));
+  --gradient-veil: linear-gradient(180deg, oklch(0.19 0.021 173 / 0), oklch(0.19 0.021 173 / 0.92));
+  --shadow-float: 0 18px 40px -18px oklch(0.1 0.03 170 / 0.9);
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior-y: none;
+  }
+}
+
+@utility bhek-shell {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 30rem;
+  min-height: 100dvh;
+  position: relative;
+  background-color: var(--color-background);
+}
+
+@utility gradient-emerald {
+  background-image: var(--gradient-emerald);
+}
+
+@utility chat-canvas {
+  background-color: var(--color-background);
+  background-image:
+    radial-gradient(circle at 18% 12%, oklch(0.7 0.132 168 / 0.09), transparent 42%),
+    radial-gradient(circle at 82% 78%, oklch(0.62 0.12 196 / 0.08), transparent 46%);
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility brand-glow {
+  filter: drop-shadow(0 10px 26px oklch(0.7 0.132 168 / 0.45));
+}
+
+@utility press {
+  transition:
+    transform 0.14s ease,
+    background-color 0.14s ease;
+  &:active {
+    transform: scale(0.94);
+  }
+}
+
+@keyframes bhek-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes bhek-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes bhek-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-8px);
+  }
+  40% {
+    transform: translateX(8px);
+  }
+  60% {
+    transform: translateX(-5px);
+  }
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes bhek-sheen {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 200% 50%;
+  }
+}
+
+.animate-rise {
+  animation: bhek-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-float {
+  animation: bhek-float 4.5s ease-in-out infinite;
+}
+
+.animate-shake {
+  animation: bhek-shake 0.45s ease;
+}
+
+.stagger > * {
+  animation: bhek-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.stagger > *:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.stagger > *:nth-child(2) {
+  animation-delay: 0.12s;
+}
+.stagger > *:nth-child(3) {
+  animation-delay: 0.19s;
+}
+.stagger > *:nth-child(4) {
+  animation-delay: 0.26s;
+}
+.stagger > *:nth-child(5) {
+  animation-delay: 0.33s;
+}
+.stagger > *:nth-child(6) {
+  animation-delay: 0.4s;
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    100deg,
+    var(--foreground) 20%,
+    var(--primary) 45%,
+    var(--foreground) 70%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: bhek-sheen 5s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .animate-float,
+  .animate-shake,
+  .stagger > *,
+  .shimmer-text {
+    animation: none !important;
+  }
+}
+
+
+/* Chat wallpapers (set on <html data-wallpaper="...">) */
+html[data-wallpaper="midnight"] .chat-canvas {
+  background-image:
+    radial-gradient(circle at 20% 10%, oklch(0.55 0.14 265 / 0.22), transparent 45%),
+    radial-gradient(circle at 80% 85%, oklch(0.45 0.11 250 / 0.2), transparent 50%);
+}
+html[data-wallpaper="sand"] .chat-canvas {
+  background-image:
+    radial-gradient(circle at 15% 15%, oklch(0.75 0.1 70 / 0.18), transparent 45%),
+    radial-gradient(circle at 85% 80%, oklch(0.68 0.09 45 / 0.16), transparent 50%);
+}
+html[data-wallpaper="violet"] .chat-canvas {
+  background-image:
+    radial-gradient(circle at 22% 12%, oklch(0.6 0.16 305 / 0.2), transparent 45%),
+    radial-gradient(circle at 78% 82%, oklch(0.55 0.14 330 / 0.18), transparent 50%);
+}
+html[data-wallpaper="carbon"] .chat-canvas {
+  background-image:
+    linear-gradient(0deg, oklch(0.3 0.01 220 / 0.25), oklch(0.2 0.01 220 / 0.1)),
+    repeating-linear-gradient(45deg, oklch(0.5 0.01 220 / 0.05) 0 6px, transparent 6px 12px);
+}
+
+/* Accessibility preferences (set on <html>) */
+html[data-font-scale="small"] { font-size: 14px; }
+html[data-font-scale="default"] { font-size: 16px; }
+html[data-font-scale="large"] { font-size: 18px; }
+html[data-font-scale="xlarge"] { font-size: 20px; }
+
+html[data-bold-text="on"] body {
+  font-weight: 600;
+}
+
+html[data-contrast="high"] {
+  --border: oklch(0.72 0.02 180);
+  --muted-foreground: oklch(0.9 0.01 180);
+}
+
+html[data-motion="reduced"] .animate-rise,
+html[data-motion="reduced"] .animate-float,
+html[data-motion="reduced"] .animate-shake,
+html[data-motion="reduced"] .stagger > *,
+html[data-motion="reduced"] .shimmer-text {
+  animation: none !important;
+}
+
+/* Custom / picture wallpapers (set via --chat-wallpaper on <html>) */
+html[data-wallpaper="custom"] .chat-canvas {
+  background-image: var(--chat-wallpaper);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+html[data-wallpaper="custom"] .chat-canvas::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: oklch(0.16 0.02 180 / 0.62);
+  z-index: -1;
+}
+
+.icon-btn{display:grid;place-items:center;width:36px;height:36px;border-radius:999px;color:var(--muted-foreground);transition:.15s}.icon-btn:hover{background:var(--muted);color:var(--foreground)}.icon-btn svg{width:18px;height:18px}
